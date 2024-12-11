@@ -1,1 +1,1 @@
-# This where all of the backend files will live
+# This where all of the project files live

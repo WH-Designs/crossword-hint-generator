@@ -1,4 +1,4 @@
-# Project Title
+# Crossword Hint Generator
 
 
 
@@ -6,7 +6,6 @@
 
 - [Overview](#overview)
   - [Screenshot](#screenshot)
-  - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
@@ -19,26 +18,27 @@
 
 ![Final Solution]()
 
-### Links
-
-- Solution URL: [Solution URL]()
-- Live Site URL: [Live Site]()
 
 ### Vision Statement
-
+For this project I wanted to create a tool where I can easily get as many hints as I wanted for crossword prompts if I need them to better understand what the word could be. I am starting to get more into crossword puzzles to help with my memory and when I started on the easy puzzles in a new york times crossword journal I severily underestimated the difficulty for the words themselves, and so I was creating this tool to help with it so I can get better with time and might not need this tool.
 
 ## My process
 
 ### Built with
 
-- 
+- React
+- Fluent UI
+- Typescript
+- Open AI
 
 ### What I learned
-
+- For this project I wanted to learn more about how to work with typescript and react
+- I also wanted to learn how to connect open AI api to react web app
+- Currently for work I am using fluent UI frequently and want to learn more about it by using it on this project
 
 
 ### Continued development
-
+- As I use the tool I might think of new features I could add to the project
 
 
 ## Author
