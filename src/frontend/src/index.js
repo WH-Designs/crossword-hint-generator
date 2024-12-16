@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { FluentProvider, teamsDarkTheme } from '@fluentui/react-components';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { FluentProvider, webLightTheme } from "@fluentui/react-components";
 
 ReactDOM.render(
-  <FluentProvider theme={teamsDarkTheme}>
+  <FluentProvider theme={webLightTheme}>
     <App />
   </FluentProvider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
