@@ -10,6 +10,7 @@ import {
   CardFooter,
   makeStyles,
 } from "@fluentui/react-components";
+import { useForm } from "react-hook-form";
 
 const useStyles = makeStyles({
   card: {
@@ -27,6 +28,11 @@ const useStyles = makeStyles({
       fontFamily: "serif",
       fontSize: "15pt",
     },
+  },
+  submit: {
+    marginTop: "10px",
+    fontSize: "15pt",
+    marginLeft: "5px",
   },
 });
 
@@ -62,18 +68,34 @@ function GeneratorHintForm() {
 
   const styles = useStyles();
 
+  const { register, handleSubmit, setValue } = useForm({
+    defaultValues: {
+      prompt: "",
+      letters: 3,
+      hints: 1,
+      letterSelect: "",
+    },
+  });
+
+  function generate(data) {
+    console.log(data);
+  }
+
   return (
     <Card className={styles.card}>
       <CardHeader></CardHeader>
       <CardPreview>
-        <form>
+        <form onSubmit={handleSubmit(generate)}>
           <Field
             className={styles.label}
             label="What is the original prompt?"
             required
             size="large"
           >
-            <Input placeholder="What is blue and has clouds" />
+            <Input
+              {...register("prompt")}
+              placeholder="What is blue and has clouds"
+            />
           </Field>
           <Field
             className={styles.label}
@@ -81,7 +103,7 @@ function GeneratorHintForm() {
             required
             size="large"
           >
-            <SpinButton defaultValue={3} />
+            <SpinButton {...register("letters")} defaultValue={3} />
           </Field>
           <Field
             className={styles.label}
@@ -89,14 +111,19 @@ function GeneratorHintForm() {
             required
             size="large"
           >
-            <SpinButton defaultValue={1} />
+            <SpinButton {...register("hints")} defaultValue={1} />
           </Field>
           <Field
             className={styles.label}
             label="What is one letter the word contains?"
             size="large"
           >
-            <Dropdown>
+            <Dropdown
+              defaultValue=""
+              onOptionSelect={(_, option) =>
+                setValue("letterSelect", option.optionValue)
+              }
+            >
               {alphabet.map((letter) => (
                 <Option key={letter} value={letter}>
                   {letter}
@@ -104,6 +131,7 @@ function GeneratorHintForm() {
               ))}
             </Dropdown>
           </Field>
+          <Input className={styles.submit} type="submit" value="submit" />
         </form>
       </CardPreview>
       <CardFooter></CardFooter>
