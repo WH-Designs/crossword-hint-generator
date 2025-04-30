@@ -10,6 +10,7 @@ import {
   CardFooter,
   makeStyles,
 } from "@fluentui/react-components";
+import HintsCard from "./HintsCard";
 import { useForm } from "react-hook-form";
 
 const useStyles = makeStyles({
@@ -82,60 +83,63 @@ function GeneratorHintForm() {
   }
 
   return (
-    <Card className={styles.card}>
-      <CardHeader></CardHeader>
-      <CardPreview>
-        <form onSubmit={handleSubmit(generate)}>
-          <Field
-            className={styles.label}
-            label="What is the original prompt?"
-            required
-            size="large"
-          >
-            <Input
-              {...register("prompt")}
-              placeholder="What is blue and has clouds"
-            />
-          </Field>
-          <Field
-            className={styles.label}
-            label="How many letters is the word?"
-            required
-            size="large"
-          >
-            <SpinButton {...register("letters")} defaultValue={3} />
-          </Field>
-          <Field
-            className={styles.label}
-            label="How many hints would you like?"
-            required
-            size="large"
-          >
-            <SpinButton {...register("hints")} defaultValue={1} />
-          </Field>
-          <Field
-            className={styles.label}
-            label="What is one letter the word contains?"
-            size="large"
-          >
-            <Dropdown
-              defaultValue=""
-              onOptionSelect={(_, option) =>
-                setValue("letterSelect", option.optionValue)
-              }
+    <>
+      <Card className={styles.card}>
+        <CardHeader></CardHeader>
+        <CardPreview>
+          <form onSubmit={handleSubmit(generate)}>
+            <Field
+              className={styles.label}
+              label="What is the original prompt?"
+              required
+              size="large"
             >
-              {alphabet.map((letter) => (
-                <Option key={letter} value={letter}>
-                  {letter}
-                </Option>
-              ))}
-            </Dropdown>
-          </Field>
-          <Input className={styles.submit} type="submit" value="submit" />
-        </form>
-      </CardPreview>
-      <CardFooter></CardFooter>
-    </Card>
+              <Input
+                {...register("prompt")}
+                placeholder="What is blue and has clouds"
+              />
+            </Field>
+            <Field
+              className={styles.label}
+              label="How many letters is the word?"
+              required
+              size="large"
+            >
+              <SpinButton {...register("letters")} defaultValue={3} />
+            </Field>
+            <Field
+              className={styles.label}
+              label="How many hints would you like?"
+              required
+              size="large"
+            >
+              <SpinButton {...register("hints")} defaultValue={1} />
+            </Field>
+            <Field
+              className={styles.label}
+              label="What is one letter the word contains?"
+              size="large"
+            >
+              <Dropdown
+                defaultValue=""
+                onOptionSelect={(_, option) =>
+                  setValue("letterSelect", option.optionValue)
+                }
+              >
+                {alphabet.map((letter) => (
+                  <Option key={letter} value={letter}>
+                    {letter}
+                  </Option>
+                ))}
+              </Dropdown>
+            </Field>
+            <Input className={styles.submit} type="submit" value="submit" />
+          </form>
+        </CardPreview>
+        <CardFooter></CardFooter>
+      </Card>
+      <HintsCard />
+    </>
   );
 }
 
